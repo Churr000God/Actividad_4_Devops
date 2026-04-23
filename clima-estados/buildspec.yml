@@ -1,0 +1,40 @@
+version: 0.2
+
+env:
+  variables:
+    IMAGE_NAME: "clima-estados-app"
+
+phases:
+  install:
+    commands:
+      - echo "=== INSTALL ==="
+      - mkdir -p dist logs
+      - printenv | sort > logs/codebuild-env.log
+
+  pre_build:
+    commands:
+      - echo "=== PRE_BUILD ==="
+      - echo "Build ID: $CODEBUILD_BUILD_ID" | tee -a logs/pipeline.log
+      - echo "Source version: $CODEBUILD_SOURCE_VERSION" | tee -a logs/pipeline.log
+      - docker --version
+      - aws --version
+
+  build:
+    commands:
+      - echo "=== BUILD ==="
+      - docker build -t $IMAGE_NAME .
+      - docker run --rm -v "$PWD/dist:/app/dist" -v "$PWD/logs:/app/logs" -v "$PWD/data:/app/data" $IMAGE_NAME
+      - ls -R dist
+      - ls -R logs
+
+  post_build:
+    commands:
+      - echo "=== POST_BUILD ==="
+      - date | tee -a logs/pipeline.log
+      - printf '{"build_id":"%s","status":"SUCCESS"}\n' "$CODEBUILD_BUILD_ID" > logs/build-summary.json
+
+artifacts:
+  files:
+    - dist/**/*
+    - logs/**/*
+  discard-paths: no

@@ -1,0 +1,9 @@
+{
+  "generated_at_utc": "2026-04-23T00:00:49.820569Z",
+  "source_file": "Estados.txt",
+  "total_records": 32,
+  "outputs": [
+    "index.html",
+    "estados.json"
+  ]
+}
