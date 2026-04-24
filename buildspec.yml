@@ -36,7 +36,8 @@ phases:
       - echo "=== POST_BUILD ==="
       - date | tee -a logs/pipeline.log
       - |
-        printf '{"build_id":"%s","status":"SUCCESS"}\n' "$CODEBUILD_BUILD_ID" > logs/build-summary.json
+        if [ "${CODEBUILD_BUILD_SUCCEEDING}" = "0" ]; then STATUS="FAILED"; else STATUS="SUCCESS"; fi
+        printf '{"build_id":"%s","status":"%s"}\n' "$CODEBUILD_BUILD_ID" "$STATUS" > logs/build-summary.json
 
 artifacts:
   files:
