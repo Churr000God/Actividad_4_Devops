@@ -55,6 +55,28 @@
       color: #2563eb;
       text-decoration: none;
     }
+    details {
+      margin-top: 20px;
+      padding: 12px;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      background: #f9fafb;
+    }
+    summary {
+      cursor: pointer;
+      font-weight: 600;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #0b1220;
+      color: #e5e7eb;
+      padding: 16px;
+      border-radius: 12px;
+      overflow: auto;
+      font-size: 12px;
+      margin: 12px 0 0 0;
+    }
   </style>
 </head>
 <body>
@@ -62,8 +84,9 @@
     <h1>Reporte de Estados y Clima</h1>
     <div class="meta">
       Registros procesados: <strong>32</strong><br>
-      Fecha de generación: <strong>2026-04-23 00:17:07 UTC</strong><br>
-      JSON generado: <a href="estados.json">estados.json</a>
+      Fecha de generación: <strong>2026-04-24 00:37:07 UTC</strong><br>
+      JSON generado: <a href="estados.json">estados.json</a><br>
+      JSON DynamoDB: <a href="estados_dynamodb.json">estados_dynamodb.json</a>
     </div>
 
     <table>
@@ -433,6 +456,748 @@
         
       </tbody>
     </table>
+
+    <details>
+      <summary>Ver JSON en formato DynamoDB</summary>
+      <pre>[
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Aguascalientes&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;24&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;45&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;900&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;500&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;3&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;4&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Baja California&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;28&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;40&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;1200&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;1500&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;5&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;24&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Baja California Sur&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;30&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;50&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;1800&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;2000&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;5&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;28&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Campeche&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;29&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;70&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;1100&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;1300&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;4&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;12&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Chiapas&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;26&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;80&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;800&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;1200&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;5&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;14&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Chihuahua&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;22&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;35&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;950&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;1400&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;4&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;10&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Ciudad de Mexico&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;20&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;60&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;1300&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;300&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;3&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;1&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Coahuila&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;27&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;30&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;900&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;1200&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;4&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;9&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Colima&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;28&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;65&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;1400&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;1000&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;4&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;6&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Durango&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;23&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;40&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;850&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;1100&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;4&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;8&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Estado de Mexico&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;19&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;55&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;1000&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;200&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;3&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;1&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Guanajuato&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;24&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;50&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;950&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;400&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;3&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;3&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Guerrero&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;30&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;75&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;1500&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;900&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;5&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;6&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Hidalgo&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;21&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;60&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;850&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;300&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;3&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;2&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Jalisco&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;26&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;55&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;1200&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;700&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;4&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;5&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Michoacan&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;25&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;65&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;900&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;600&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;4&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;4&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Morelos&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;27&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;70&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;1100&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;300&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;3&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;2&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Nayarit&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;29&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;75&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;1400&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;1200&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;5&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;7&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Nuevo Leon&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;28&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;45&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;1300&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;800&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;4&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;6&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Oaxaca&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;27&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;70&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;900&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;900&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;5&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;8&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Puebla&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;22&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;65&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;1000&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;400&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;4&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;3&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Queretaro&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;23&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;50&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;1100&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;400&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;3&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;3&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Quintana Roo&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;31&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;80&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;2000&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;1800&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;6&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;20&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;San Luis Potosi&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;24&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;50&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;900&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;700&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;4&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;5&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Sinaloa&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;30&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;65&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;1200&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;1300&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;5&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;10&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Sonora&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;32&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;30&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;1100&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;1500&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;5&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;18&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Tabasco&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;29&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;85&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;900&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;1000&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;4&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;12&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Tamaulipas&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;28&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;60&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;1000&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;900&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;4&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;9&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Tlaxcala&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;21&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;60&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;800&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;300&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;3&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;2&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Veracruz&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;28&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;80&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;1100&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;700&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;5&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;6&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Yucatan&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;30&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;75&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;1300&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;1500&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;5&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;16&quot;
+    }
+  },
+  {
+    &quot;Estado&quot;: {
+      &quot;S&quot;: &quot;Zacatecas&quot;
+    },
+    &quot;Temperatura&quot;: {
+      &quot;N&quot;: &quot;22&quot;
+    },
+    &quot;Humedad&quot;: {
+      &quot;N&quot;: &quot;40&quot;
+    },
+    &quot;Costo_Alojamiento&quot;: {
+      &quot;N&quot;: &quot;850&quot;
+    },
+    &quot;Costo_Transporte&quot;: {
+      &quot;N&quot;: &quot;800&quot;
+    },
+    &quot;Dias_Promedio&quot;: {
+      &quot;N&quot;: &quot;4&quot;
+    },
+    &quot;Tiempo_Traslado&quot;: {
+      &quot;N&quot;: &quot;6&quot;
+    }
+  }
+]</pre>
+    </details>
 
     <div class="footer">
       Página generada automáticamente por pipeline AWS CodeBuild + Docker.

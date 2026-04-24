@@ -1,0 +1,738 @@
+[
+  {
+    "Estado": {
+      "S": "Aguascalientes"
+    },
+    "Temperatura": {
+      "N": "24"
+    },
+    "Humedad": {
+      "N": "45"
+    },
+    "Costo_Alojamiento": {
+      "N": "900"
+    },
+    "Costo_Transporte": {
+      "N": "500"
+    },
+    "Dias_Promedio": {
+      "N": "3"
+    },
+    "Tiempo_Traslado": {
+      "N": "4"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Baja California"
+    },
+    "Temperatura": {
+      "N": "28"
+    },
+    "Humedad": {
+      "N": "40"
+    },
+    "Costo_Alojamiento": {
+      "N": "1200"
+    },
+    "Costo_Transporte": {
+      "N": "1500"
+    },
+    "Dias_Promedio": {
+      "N": "5"
+    },
+    "Tiempo_Traslado": {
+      "N": "24"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Baja California Sur"
+    },
+    "Temperatura": {
+      "N": "30"
+    },
+    "Humedad": {
+      "N": "50"
+    },
+    "Costo_Alojamiento": {
+      "N": "1800"
+    },
+    "Costo_Transporte": {
+      "N": "2000"
+    },
+    "Dias_Promedio": {
+      "N": "5"
+    },
+    "Tiempo_Traslado": {
+      "N": "28"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Campeche"
+    },
+    "Temperatura": {
+      "N": "29"
+    },
+    "Humedad": {
+      "N": "70"
+    },
+    "Costo_Alojamiento": {
+      "N": "1100"
+    },
+    "Costo_Transporte": {
+      "N": "1300"
+    },
+    "Dias_Promedio": {
+      "N": "4"
+    },
+    "Tiempo_Traslado": {
+      "N": "12"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Chiapas"
+    },
+    "Temperatura": {
+      "N": "26"
+    },
+    "Humedad": {
+      "N": "80"
+    },
+    "Costo_Alojamiento": {
+      "N": "800"
+    },
+    "Costo_Transporte": {
+      "N": "1200"
+    },
+    "Dias_Promedio": {
+      "N": "5"
+    },
+    "Tiempo_Traslado": {
+      "N": "14"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Chihuahua"
+    },
+    "Temperatura": {
+      "N": "22"
+    },
+    "Humedad": {
+      "N": "35"
+    },
+    "Costo_Alojamiento": {
+      "N": "950"
+    },
+    "Costo_Transporte": {
+      "N": "1400"
+    },
+    "Dias_Promedio": {
+      "N": "4"
+    },
+    "Tiempo_Traslado": {
+      "N": "10"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Ciudad de Mexico"
+    },
+    "Temperatura": {
+      "N": "20"
+    },
+    "Humedad": {
+      "N": "60"
+    },
+    "Costo_Alojamiento": {
+      "N": "1300"
+    },
+    "Costo_Transporte": {
+      "N": "300"
+    },
+    "Dias_Promedio": {
+      "N": "3"
+    },
+    "Tiempo_Traslado": {
+      "N": "1"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Coahuila"
+    },
+    "Temperatura": {
+      "N": "27"
+    },
+    "Humedad": {
+      "N": "30"
+    },
+    "Costo_Alojamiento": {
+      "N": "900"
+    },
+    "Costo_Transporte": {
+      "N": "1200"
+    },
+    "Dias_Promedio": {
+      "N": "4"
+    },
+    "Tiempo_Traslado": {
+      "N": "9"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Colima"
+    },
+    "Temperatura": {
+      "N": "28"
+    },
+    "Humedad": {
+      "N": "65"
+    },
+    "Costo_Alojamiento": {
+      "N": "1400"
+    },
+    "Costo_Transporte": {
+      "N": "1000"
+    },
+    "Dias_Promedio": {
+      "N": "4"
+    },
+    "Tiempo_Traslado": {
+      "N": "6"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Durango"
+    },
+    "Temperatura": {
+      "N": "23"
+    },
+    "Humedad": {
+      "N": "40"
+    },
+    "Costo_Alojamiento": {
+      "N": "850"
+    },
+    "Costo_Transporte": {
+      "N": "1100"
+    },
+    "Dias_Promedio": {
+      "N": "4"
+    },
+    "Tiempo_Traslado": {
+      "N": "8"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Estado de Mexico"
+    },
+    "Temperatura": {
+      "N": "19"
+    },
+    "Humedad": {
+      "N": "55"
+    },
+    "Costo_Alojamiento": {
+      "N": "1000"
+    },
+    "Costo_Transporte": {
+      "N": "200"
+    },
+    "Dias_Promedio": {
+      "N": "3"
+    },
+    "Tiempo_Traslado": {
+      "N": "1"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Guanajuato"
+    },
+    "Temperatura": {
+      "N": "24"
+    },
+    "Humedad": {
+      "N": "50"
+    },
+    "Costo_Alojamiento": {
+      "N": "950"
+    },
+    "Costo_Transporte": {
+      "N": "400"
+    },
+    "Dias_Promedio": {
+      "N": "3"
+    },
+    "Tiempo_Traslado": {
+      "N": "3"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Guerrero"
+    },
+    "Temperatura": {
+      "N": "30"
+    },
+    "Humedad": {
+      "N": "75"
+    },
+    "Costo_Alojamiento": {
+      "N": "1500"
+    },
+    "Costo_Transporte": {
+      "N": "900"
+    },
+    "Dias_Promedio": {
+      "N": "5"
+    },
+    "Tiempo_Traslado": {
+      "N": "6"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Hidalgo"
+    },
+    "Temperatura": {
+      "N": "21"
+    },
+    "Humedad": {
+      "N": "60"
+    },
+    "Costo_Alojamiento": {
+      "N": "850"
+    },
+    "Costo_Transporte": {
+      "N": "300"
+    },
+    "Dias_Promedio": {
+      "N": "3"
+    },
+    "Tiempo_Traslado": {
+      "N": "2"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Jalisco"
+    },
+    "Temperatura": {
+      "N": "26"
+    },
+    "Humedad": {
+      "N": "55"
+    },
+    "Costo_Alojamiento": {
+      "N": "1200"
+    },
+    "Costo_Transporte": {
+      "N": "700"
+    },
+    "Dias_Promedio": {
+      "N": "4"
+    },
+    "Tiempo_Traslado": {
+      "N": "5"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Michoacan"
+    },
+    "Temperatura": {
+      "N": "25"
+    },
+    "Humedad": {
+      "N": "65"
+    },
+    "Costo_Alojamiento": {
+      "N": "900"
+    },
+    "Costo_Transporte": {
+      "N": "600"
+    },
+    "Dias_Promedio": {
+      "N": "4"
+    },
+    "Tiempo_Traslado": {
+      "N": "4"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Morelos"
+    },
+    "Temperatura": {
+      "N": "27"
+    },
+    "Humedad": {
+      "N": "70"
+    },
+    "Costo_Alojamiento": {
+      "N": "1100"
+    },
+    "Costo_Transporte": {
+      "N": "300"
+    },
+    "Dias_Promedio": {
+      "N": "3"
+    },
+    "Tiempo_Traslado": {
+      "N": "2"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Nayarit"
+    },
+    "Temperatura": {
+      "N": "29"
+    },
+    "Humedad": {
+      "N": "75"
+    },
+    "Costo_Alojamiento": {
+      "N": "1400"
+    },
+    "Costo_Transporte": {
+      "N": "1200"
+    },
+    "Dias_Promedio": {
+      "N": "5"
+    },
+    "Tiempo_Traslado": {
+      "N": "7"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Nuevo Leon"
+    },
+    "Temperatura": {
+      "N": "28"
+    },
+    "Humedad": {
+      "N": "45"
+    },
+    "Costo_Alojamiento": {
+      "N": "1300"
+    },
+    "Costo_Transporte": {
+      "N": "800"
+    },
+    "Dias_Promedio": {
+      "N": "4"
+    },
+    "Tiempo_Traslado": {
+      "N": "6"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Oaxaca"
+    },
+    "Temperatura": {
+      "N": "27"
+    },
+    "Humedad": {
+      "N": "70"
+    },
+    "Costo_Alojamiento": {
+      "N": "900"
+    },
+    "Costo_Transporte": {
+      "N": "900"
+    },
+    "Dias_Promedio": {
+      "N": "5"
+    },
+    "Tiempo_Traslado": {
+      "N": "8"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Puebla"
+    },
+    "Temperatura": {
+      "N": "22"
+    },
+    "Humedad": {
+      "N": "65"
+    },
+    "Costo_Alojamiento": {
+      "N": "1000"
+    },
+    "Costo_Transporte": {
+      "N": "400"
+    },
+    "Dias_Promedio": {
+      "N": "4"
+    },
+    "Tiempo_Traslado": {
+      "N": "3"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Queretaro"
+    },
+    "Temperatura": {
+      "N": "23"
+    },
+    "Humedad": {
+      "N": "50"
+    },
+    "Costo_Alojamiento": {
+      "N": "1100"
+    },
+    "Costo_Transporte": {
+      "N": "400"
+    },
+    "Dias_Promedio": {
+      "N": "3"
+    },
+    "Tiempo_Traslado": {
+      "N": "3"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Quintana Roo"
+    },
+    "Temperatura": {
+      "N": "31"
+    },
+    "Humedad": {
+      "N": "80"
+    },
+    "Costo_Alojamiento": {
+      "N": "2000"
+    },
+    "Costo_Transporte": {
+      "N": "1800"
+    },
+    "Dias_Promedio": {
+      "N": "6"
+    },
+    "Tiempo_Traslado": {
+      "N": "20"
+    }
+  },
+  {
+    "Estado": {
+      "S": "San Luis Potosi"
+    },
+    "Temperatura": {
+      "N": "24"
+    },
+    "Humedad": {
+      "N": "50"
+    },
+    "Costo_Alojamiento": {
+      "N": "900"
+    },
+    "Costo_Transporte": {
+      "N": "700"
+    },
+    "Dias_Promedio": {
+      "N": "4"
+    },
+    "Tiempo_Traslado": {
+      "N": "5"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Sinaloa"
+    },
+    "Temperatura": {
+      "N": "30"
+    },
+    "Humedad": {
+      "N": "65"
+    },
+    "Costo_Alojamiento": {
+      "N": "1200"
+    },
+    "Costo_Transporte": {
+      "N": "1300"
+    },
+    "Dias_Promedio": {
+      "N": "5"
+    },
+    "Tiempo_Traslado": {
+      "N": "10"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Sonora"
+    },
+    "Temperatura": {
+      "N": "32"
+    },
+    "Humedad": {
+      "N": "30"
+    },
+    "Costo_Alojamiento": {
+      "N": "1100"
+    },
+    "Costo_Transporte": {
+      "N": "1500"
+    },
+    "Dias_Promedio": {
+      "N": "5"
+    },
+    "Tiempo_Traslado": {
+      "N": "18"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Tabasco"
+    },
+    "Temperatura": {
+      "N": "29"
+    },
+    "Humedad": {
+      "N": "85"
+    },
+    "Costo_Alojamiento": {
+      "N": "900"
+    },
+    "Costo_Transporte": {
+      "N": "1000"
+    },
+    "Dias_Promedio": {
+      "N": "4"
+    },
+    "Tiempo_Traslado": {
+      "N": "12"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Tamaulipas"
+    },
+    "Temperatura": {
+      "N": "28"
+    },
+    "Humedad": {
+      "N": "60"
+    },
+    "Costo_Alojamiento": {
+      "N": "1000"
+    },
+    "Costo_Transporte": {
+      "N": "900"
+    },
+    "Dias_Promedio": {
+      "N": "4"
+    },
+    "Tiempo_Traslado": {
+      "N": "9"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Tlaxcala"
+    },
+    "Temperatura": {
+      "N": "21"
+    },
+    "Humedad": {
+      "N": "60"
+    },
+    "Costo_Alojamiento": {
+      "N": "800"
+    },
+    "Costo_Transporte": {
+      "N": "300"
+    },
+    "Dias_Promedio": {
+      "N": "3"
+    },
+    "Tiempo_Traslado": {
+      "N": "2"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Veracruz"
+    },
+    "Temperatura": {
+      "N": "28"
+    },
+    "Humedad": {
+      "N": "80"
+    },
+    "Costo_Alojamiento": {
+      "N": "1100"
+    },
+    "Costo_Transporte": {
+      "N": "700"
+    },
+    "Dias_Promedio": {
+      "N": "5"
+    },
+    "Tiempo_Traslado": {
+      "N": "6"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Yucatan"
+    },
+    "Temperatura": {
+      "N": "30"
+    },
+    "Humedad": {
+      "N": "75"
+    },
+    "Costo_Alojamiento": {
+      "N": "1300"
+    },
+    "Costo_Transporte": {
+      "N": "1500"
+    },
+    "Dias_Promedio": {
+      "N": "5"
+    },
+    "Tiempo_Traslado": {
+      "N": "16"
+    }
+  },
+  {
+    "Estado": {
+      "S": "Zacatecas"
+    },
+    "Temperatura": {
+      "N": "22"
+    },
+    "Humedad": {
+      "N": "40"
+    },
+    "Costo_Alojamiento": {
+      "N": "850"
+    },
+    "Costo_Transporte": {
+      "N": "800"
+    },
+    "Dias_Promedio": {
+      "N": "4"
+    },
+    "Tiempo_Traslado": {
+      "N": "6"
+    }
+  }
+]

@@ -1,5 +1,6 @@
 import csv
 import json
+import html as html_lib
 from pathlib import Path
 from datetime import datetime, UTC
 
@@ -9,6 +10,7 @@ DIST_DIR = BASE_DIR / "dist"
 LOGS_DIR = BASE_DIR / "logs"
 TEMPLATE_FILE = BASE_DIR / "app" / "templates" / "index.tpl.html"
 JSON_FILE = DIST_DIR / "estados.json"
+DDB_JSON_FILE = DIST_DIR / "estados_dynamodb.json"
 HTML_FILE = DIST_DIR / "index.html"
 APP_LOG = LOGS_DIR / "build.log"
 
@@ -59,19 +61,70 @@ def build_table_rows(rows):
     return "\n".join(html_rows)
 
 
-def generate_html(rows, template_path: Path, output_path: Path):
+def normalize_number_string(value: str) -> str:
+    return value.strip().replace(",", "")
+
+
+def to_dynamodb_attribute_value(value, force_type: str | None = None):
+    if value is None:
+        return {"NULL": True}
+
+    value_str = str(value).strip()
+    if value_str == "":
+        return {"NULL": True}
+
+    if force_type == "S":
+        return {"S": value_str}
+    if force_type == "N":
+        return {"N": normalize_number_string(value_str)}
+
+    number_candidate = normalize_number_string(value_str)
+    try:
+        float(number_candidate)
+        return {"N": number_candidate}
+    except ValueError:
+        return {"S": value_str}
+
+
+def build_dynamodb_items(rows):
+    numeric_columns = {
+        "Temperatura",
+        "Humedad",
+        "Costo_Alojamiento",
+        "Costo_Transporte",
+        "Dias_Promedio",
+        "Tiempo_Traslado",
+    }
+
+    items = []
+    for row in rows:
+        item = {}
+        for key, value in row.items():
+            if key == "Estado":
+                item[key] = to_dynamodb_attribute_value(value, force_type="S")
+            elif key in numeric_columns:
+                item[key] = to_dynamodb_attribute_value(value, force_type="N")
+            else:
+                item[key] = to_dynamodb_attribute_value(value)
+        items.append(item)
+    return items
+
+
+def generate_html(rows, template_path: Path, output_path: Path, ddb_json_pretty: str):
     with template_path.open("r", encoding="utf-8") as f:
         template = f.read()
 
-    html = template.format(
+    rendered_html = template.format(
         total_registros=len(rows),
         fecha_generacion=datetime.now(UTC).strftime("%Y-%m-%d %H:%M:%S UTC"),
         table_rows=build_table_rows(rows),
         json_filename="estados.json",
+        ddb_json_filename="estados_dynamodb.json",
+        ddb_json_pretty=html_lib.escape(ddb_json_pretty),
     )
 
     with output_path.open("w", encoding="utf-8") as f:
-        f.write(html)
+        f.write(rendered_html)
 
 
 def main():
@@ -88,7 +141,12 @@ def main():
     save_json(rows, JSON_FILE)
     log(f"JSON generado en: {JSON_FILE}")
 
-    generate_html(rows, TEMPLATE_FILE, HTML_FILE)
+    ddb_items = build_dynamodb_items(rows)
+    save_json(ddb_items, DDB_JSON_FILE)
+    log(f"JSON DynamoDB generado en: {DDB_JSON_FILE}")
+
+    ddb_json_pretty = json.dumps(ddb_items, ensure_ascii=False, indent=2)
+    generate_html(rows, TEMPLATE_FILE, HTML_FILE, ddb_json_pretty=ddb_json_pretty)
     log(f"HTML generado en: {HTML_FILE}")
 
     generated_at_utc = datetime.now(UTC).isoformat().replace("+00:00", "Z")
@@ -96,7 +154,7 @@ def main():
         "generated_at_utc": generated_at_utc,
         "source_file": DATA_FILE.name,
         "total_records": len(rows),
-        "outputs": ["index.html", "estados.json"],
+        "outputs": ["index.html", "estados.json", "estados_dynamodb.json"],
     }
     save_json(manifest, DIST_DIR / "manifest.json")
     log("Manifest generado.")

@@ -55,6 +55,28 @@
       color: #2563eb;
       text-decoration: none;
     }}
+    details {{
+      margin-top: 20px;
+      padding: 12px;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      background: #f9fafb;
+    }}
+    summary {{
+      cursor: pointer;
+      font-weight: 600;
+    }}
+    pre {{
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #0b1220;
+      color: #e5e7eb;
+      padding: 16px;
+      border-radius: 12px;
+      overflow: auto;
+      font-size: 12px;
+      margin: 12px 0 0 0;
+    }}
   </style>
 </head>
 <body>
@@ -63,7 +85,8 @@
     <div class="meta">
       Registros procesados: <strong>{total_registros}</strong><br>
       Fecha de generación: <strong>{fecha_generacion}</strong><br>
-      JSON generado: <a href="{json_filename}">{json_filename}</a>
+      JSON generado: <a href="{json_filename}">{json_filename}</a><br>
+      JSON DynamoDB: <a href="{ddb_json_filename}">{ddb_json_filename}</a>
     </div>
 
     <table>
@@ -82,6 +105,11 @@
         {table_rows}
       </tbody>
     </table>
+
+    <details>
+      <summary>Ver JSON en formato DynamoDB</summary>
+      <pre>{ddb_json_pretty}</pre>
+    </details>
 
     <div class="footer">
       Página generada automáticamente por pipeline AWS CodeBuild + Docker.

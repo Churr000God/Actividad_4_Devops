@@ -1,9 +1,10 @@
 {
-  "generated_at_utc": "2026-04-23T00:17:07.350317Z",
+  "generated_at_utc": "2026-04-24T00:37:07.233196Z",
   "source_file": "Estados.txt",
   "total_records": 32,
   "outputs": [
     "index.html",
-    "estados.json"
+    "estados.json",
+    "estados_dynamodb.json"
   ]
 }
