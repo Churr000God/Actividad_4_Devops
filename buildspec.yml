@@ -3,6 +3,7 @@ version: 0.2
 env:
   variables:
     IMAGE_NAME: "clima-estados-app"
+    DDB_TABLE_NAME: "clima_estados"
 
 phases:
   install:

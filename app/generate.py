@@ -15,6 +15,7 @@ JSON_FILE = DIST_DIR / "estados.json"
 DDB_JSON_FILE = DIST_DIR / "estados_dynamodb.json"
 HTML_FILE = DIST_DIR / "index.html"
 APP_LOG = LOGS_DIR / "build.log"
+DDB_LOG = LOGS_DIR / "dynamodb.log"
 
 
 def ensure_dirs():
@@ -157,6 +158,16 @@ def coerce_rows_for_table(items):
     return rows
 
 
+def read_dynamodb_logs() -> str:
+    if not DDB_LOG.exists():
+        return "No se encontraron logs de DynamoDB en esta ejecución."
+
+    content = DDB_LOG.read_text(encoding="utf-8", errors="replace")
+    if len(content) <= 60_000:
+        return content
+    return content[-60_000:]
+
+
 def generate_html(rows, template_path: Path, output_path: Path, ddb_json_pretty: str):
     with template_path.open("r", encoding="utf-8") as f:
         template = f.read()
@@ -168,6 +179,7 @@ def generate_html(rows, template_path: Path, output_path: Path, ddb_json_pretty:
         json_filename="estados.json",
         ddb_json_filename="estados_dynamodb.json",
         ddb_json_pretty=html_lib.escape(ddb_json_pretty),
+        dynamodb_logs_pretty=html_lib.escape(read_dynamodb_logs()),
     )
 
     with output_path.open("w", encoding="utf-8") as f:
