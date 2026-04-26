@@ -1,6 +1,8 @@
 import csv
 import json
 import html as html_lib
+import os
+from decimal import Decimal
 from pathlib import Path
 from datetime import datetime, UTC
 
@@ -39,7 +41,15 @@ def read_txt_as_csv(file_path: Path):
 
 def save_json(data, output_path: Path):
     with output_path.open("w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+        json.dump(data, f, ensure_ascii=False, indent=2, default=json_default)
+
+
+def json_default(value):
+    if isinstance(value, Decimal):
+        if value % 1 == 0:
+            return int(value)
+        return float(value)
+    raise TypeError(f"Object of type {type(value).__name__} is not JSON serializable")
 
 
 def build_table_rows(rows):
@@ -110,6 +120,33 @@ def build_dynamodb_items(rows):
     return items
 
 
+def read_dynamodb_scan(table_name: str):
+    import boto3
+    from boto3.dynamodb.types import TypeDeserializer
+
+    region = os.getenv("AWS_REGION") or os.getenv("AWS_DEFAULT_REGION")
+    client = boto3.client("dynamodb", region_name=region)
+
+    paginator = client.get_paginator("scan")
+    items_av = []
+    for page in paginator.paginate(TableName=table_name):
+        items_av.extend(page.get("Items", []))
+
+    deserializer = TypeDeserializer()
+    items = [{k: deserializer.deserialize(v) for k, v in item.items()} for item in items_av]
+    return items, items_av
+
+
+def coerce_rows_for_table(items):
+    rows = []
+    for item in items:
+        row = {}
+        for k, v in item.items():
+            row[k] = "" if v is None else str(v)
+        rows.append(row)
+    return rows
+
+
 def generate_html(rows, template_path: Path, output_path: Path, ddb_json_pretty: str):
     with template_path.open("r", encoding="utf-8") as f:
         template = f.read()
@@ -131,28 +168,46 @@ def main():
     ensure_dirs()
     log("Inicio de ejecución.")
 
-    if not DATA_FILE.exists():
-        raise FileNotFoundError(f"No se encontró el archivo: {DATA_FILE}")
+    table_name = os.getenv("DDB_TABLE_NAME", "").strip()
+    if table_name:
+        log(f"Leyendo datos desde DynamoDB. Tabla: {table_name}")
+        items, items_av = read_dynamodb_scan(table_name)
+        rows = coerce_rows_for_table(items)
+        log(f"Registros detectados (DynamoDB): {len(rows)}")
 
-    rows = read_txt_as_csv(DATA_FILE)
-    log(f"Archivo leído correctamente: {DATA_FILE}")
-    log(f"Registros detectados: {len(rows)}")
+        save_json(rows, JSON_FILE)
+        log(f"JSON generado en: {JSON_FILE}")
 
-    save_json(rows, JSON_FILE)
-    log(f"JSON generado en: {JSON_FILE}")
+        save_json(items_av, DDB_JSON_FILE)
+        log(f"JSON DynamoDB generado en: {DDB_JSON_FILE}")
 
-    ddb_items = build_dynamodb_items(rows)
-    save_json(ddb_items, DDB_JSON_FILE)
-    log(f"JSON DynamoDB generado en: {DDB_JSON_FILE}")
+        ddb_json_pretty = json.dumps(items_av, ensure_ascii=False, indent=2)
+    else:
+        if not DATA_FILE.exists():
+            raise FileNotFoundError(f"No se encontró el archivo: {DATA_FILE}")
 
-    ddb_json_pretty = json.dumps(ddb_items, ensure_ascii=False, indent=2)
+        rows = read_txt_as_csv(DATA_FILE)
+        log(f"Archivo leído correctamente: {DATA_FILE}")
+        log(f"Registros detectados: {len(rows)}")
+
+        save_json(rows, JSON_FILE)
+        log(f"JSON generado en: {JSON_FILE}")
+
+        ddb_items = build_dynamodb_items(rows)
+        save_json(ddb_items, DDB_JSON_FILE)
+        log(f"JSON DynamoDB generado en: {DDB_JSON_FILE}")
+
+        ddb_json_pretty = json.dumps(ddb_items, ensure_ascii=False, indent=2)
+
     generate_html(rows, TEMPLATE_FILE, HTML_FILE, ddb_json_pretty=ddb_json_pretty)
     log(f"HTML generado en: {HTML_FILE}")
 
     generated_at_utc = datetime.now(UTC).isoformat().replace("+00:00", "Z")
     manifest = {
         "generated_at_utc": generated_at_utc,
-        "source_file": DATA_FILE.name,
+        "source": "dynamodb" if table_name else "txt",
+        "source_table": table_name if table_name else None,
+        "source_file": None if table_name else DATA_FILE.name,
         "total_records": len(rows),
         "outputs": ["index.html", "estados.json", "estados_dynamodb.json"],
     }

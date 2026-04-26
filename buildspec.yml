@@ -27,7 +27,17 @@ phases:
       - echo "=== BUILD ==="
       - docker build -t $IMAGE_NAME .
       - |
-        docker run --rm -v "$PWD/dist:/app/dist" -v "$PWD/logs:/app/logs" -v "$PWD/data:/app/data" $IMAGE_NAME
+        docker run --rm \
+          -e DDB_TABLE_NAME \
+          -e AWS_REGION \
+          -e AWS_DEFAULT_REGION \
+          -e AWS_ACCESS_KEY_ID \
+          -e AWS_SECRET_ACCESS_KEY \
+          -e AWS_SESSION_TOKEN \
+          -v "$PWD/dist:/app/dist" \
+          -v "$PWD/logs:/app/logs" \
+          -v "$PWD/data:/app/data" \
+          $IMAGE_NAME
       - ls -R dist
       - ls -R logs
 
