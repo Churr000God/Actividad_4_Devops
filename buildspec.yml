@@ -27,16 +27,38 @@ phases:
       - echo "=== BUILD ==="
       - docker build -t $IMAGE_NAME .
       - |
+        echo "Resolved source version: ${CODEBUILD_RESOLVED_SOURCE_VERSION:-N/A}" | tee -a logs/pipeline.log
+        if [ -z "${AWS_ACCESS_KEY_ID:-}" ] || [ -z "${AWS_SECRET_ACCESS_KEY:-}" ] || [ -z "${AWS_SESSION_TOKEN:-}" ]; then
+          if [ -n "${AWS_CONTAINER_CREDENTIALS_RELATIVE_URI:-}" ]; then
+            CREDS_JSON="$(curl -s "http://169.254.170.2${AWS_CONTAINER_CREDENTIALS_RELATIVE_URI}")"
+          elif [ -n "${AWS_CONTAINER_CREDENTIALS_FULL_URI:-}" ]; then
+            CREDS_JSON="$(curl -s -H "Authorization: ${AWS_CONTAINER_AUTHORIZATION_TOKEN:-}" "${AWS_CONTAINER_CREDENTIALS_FULL_URI}")"
+          else
+            CREDS_JSON=""
+          fi
+
+          if [ -n "$CREDS_JSON" ]; then
+            export AWS_ACCESS_KEY_ID="$(python3 -c "import json,sys; print(json.load(sys.stdin).get('AccessKeyId',''))" <<< \"$CREDS_JSON\")"
+            export AWS_SECRET_ACCESS_KEY="$(python3 -c "import json,sys; print(json.load(sys.stdin).get('SecretAccessKey',''))" <<< \"$CREDS_JSON\")"
+            export AWS_SESSION_TOKEN="$(python3 -c "import json,sys; print(json.load(sys.stdin).get('Token',''))" <<< \"$CREDS_JSON\")"
+          fi
+        fi
+
+        if [ -z "${AWS_ACCESS_KEY_ID:-}" ] || [ -z "${AWS_SECRET_ACCESS_KEY:-}" ] || [ -z "${AWS_SESSION_TOKEN:-}" ]; then
+          echo "ERROR: No se detectaron credenciales AWS en el entorno de CodeBuild para ejecutar el contenedor." | tee -a logs/pipeline.log
+          exit 1
+        fi
+
         docker run --rm --network host \
           -e DDB_TABLE_NAME \
           -e AWS_REGION \
           -e AWS_DEFAULT_REGION \
-          -e AWS_ACCESS_KEY_ID \
-          -e AWS_SECRET_ACCESS_KEY \
-          -e AWS_SESSION_TOKEN \
           -e AWS_CONTAINER_CREDENTIALS_RELATIVE_URI \
           -e AWS_CONTAINER_CREDENTIALS_FULL_URI \
           -e AWS_CONTAINER_AUTHORIZATION_TOKEN \
+          -e AWS_ACCESS_KEY_ID \
+          -e AWS_SECRET_ACCESS_KEY \
+          -e AWS_SESSION_TOKEN \
           -v "$PWD/dist:/app/dist" \
           -v "$PWD/logs:/app/logs" \
           -v "$PWD/data:/app/data" \

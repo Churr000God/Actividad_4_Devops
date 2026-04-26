@@ -123,14 +123,24 @@ def build_dynamodb_items(rows):
 def read_dynamodb_scan(table_name: str):
     import boto3
     from boto3.dynamodb.types import TypeDeserializer
+    from botocore.exceptions import NoCredentialsError, ClientError
 
     region = os.getenv("AWS_REGION") or os.getenv("AWS_DEFAULT_REGION")
     client = boto3.client("dynamodb", region_name=region)
 
-    paginator = client.get_paginator("scan")
-    items_av = []
-    for page in paginator.paginate(TableName=table_name):
-        items_av.extend(page.get("Items", []))
+    try:
+        paginator = client.get_paginator("scan")
+        items_av = []
+        for page in paginator.paginate(TableName=table_name):
+            items_av.extend(page.get("Items", []))
+    except NoCredentialsError as e:
+        raise RuntimeError(
+            "No se encontraron credenciales AWS dentro del contenedor. "
+            "En CodeBuild, asegúrate de que el Service Role tenga permisos de DynamoDB y que el buildspec "
+            "inyecte credenciales al `docker run`."
+        ) from e
+    except ClientError as e:
+        raise RuntimeError(f"Error consultando DynamoDB (tabla={table_name}): {e}") from e
 
     deserializer = TypeDeserializer()
     items = [{k: deserializer.deserialize(v) for k, v in item.items()} for item in items_av]
